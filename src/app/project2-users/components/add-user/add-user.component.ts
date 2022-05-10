@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { subscribeOn, Subscription, windowToggle } from 'rxjs';
 import { User } from '../../classes/user';
 import { HttpUsersService } from '../../services/http-users.service';
+import { ManipulateDataService } from '../../services/manipulate-data.service';
 
 @Component({
   selector: 'app-add-user',
@@ -11,7 +12,7 @@ import { HttpUsersService } from '../../services/http-users.service';
 })
 export class AddUserComponent implements OnInit {
 
-  constructor(private srvHttpUser : HttpUsersService, private router : Router) { }
+  constructor(private srvHttpUser : HttpUsersService, private router : Router, private srvChangeData : ManipulateDataService) { }
 
   sub : Subscription = new Subscription();
   sub2 : Subscription = new Subscription();
@@ -48,12 +49,14 @@ export class AddUserComponent implements OnInit {
       }
       else
       {
-        let newUserNameArray = this.newUser.name.split(' ');
-        let newUserNameArray2 =  newUserNameArray.map(x =>
-          {
-            return (x.charAt(0).toUpperCase() + x.substring(1));
-          })
-        this.newUser.name = newUserNameArray2.join(' ');
+        // let newUserNameArray = this.newUser.name.split(' ');
+        // let newUserNameArray2 =  newUserNameArray.map(x =>
+        //   {
+        //     return (x.charAt(0).toUpperCase() + x.substring(1));
+        //   })
+        // this.newUser.name = newUserNameArray2.join(' ');
+
+        this.newUser.name = this.srvChangeData.titleCase(this.newUser.name)
     
         this.sub = this.srvHttpUser.addUser(this.newUser)
           .subscribe((status : any) => {
