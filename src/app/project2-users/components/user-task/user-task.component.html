@@ -1,0 +1,12 @@
+<div class="taskDiv">
+        <strong>Title</strong> : {{taskData.title}} <br>
+        <strong>Completed</strong> : {{taskData.completed}}
+        <button 
+        *ngIf="!taskData.completed" 
+        mat-raised-button 
+        style="float: right;" 
+        color="primary"
+        (click)="update()">
+                Mark as Completed
+        </button>
+</div>

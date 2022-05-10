@@ -1,0 +1,24 @@
+<div class="tasks_all">
+
+    <h2>Tasks - {{userData.name}}        
+        <button class="add_task_btn" 
+            mat-raised-button 
+            style="float: right;" 
+            color="primary"
+            (click)="toAddTask()">
+            Create Task
+        </button>
+    </h2>
+
+    <div class="tasks">
+
+        <app-user-task 
+            [userFromTasks]="userData" 
+            [taskData]="task" 
+            *ngFor="let task of tasks">
+        </app-user-task>
+    
+    </div>
+
+</div>
+

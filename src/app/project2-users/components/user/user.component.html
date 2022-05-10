@@ -1,0 +1,60 @@
+<form 
+#userForm="ngForm" 
+(ngSubmit)="update(userForm.valid)" 
+[style.border-color]="areAllTasksCompleted ? 'green': 'red' "
+[style.backgroundColor]="userData.isSelected ? 'orange' : 'transparent' ">
+
+    <div class="user_id" (click)="showTasksAndPosts()">
+        <strong>ID : {{userData.id}}</strong>
+    </div>
+
+    <div>
+        <span>
+            Name : 
+            <mat-form-field appearance="outline">
+                <input matInput type="text" name="name" [(ngModel)]="userData.name">
+            </mat-form-field>
+        </span>
+        <span>
+            Email : 
+            <mat-form-field appearance="outline">
+                <input matInput type="text" name="email" [(ngModel)]="userData.email">
+            </mat-form-field>
+        </span>
+    </div>
+
+    <button mat-raised-button style="margin-bottom: 1em;" color="primary" type="button" (click)="isOtherDataOpen=!isOtherDataOpen">Other Data</button>
+
+    <div *ngIf="isOtherDataOpen">
+        <div>
+            City : 
+            <mat-form-field appearance="outline">
+                <input matInput type="text" name="city" [(ngModel)]="userData.address.city">
+            </mat-form-field>
+        </div>
+        <div>
+            Street : 
+            <mat-form-field appearance="outline">
+                <input matInput type="text" name="street" [(ngModel)]="userData.address.street">
+            </mat-form-field>
+        </div>
+        <div>
+            Zip Code : 
+            <mat-form-field appearance="outline">
+                <input matInput type="text" name="zipcode" [(ngModel)]="userData.address.zipcode">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <span class="btns_span">
+        <button mat-raised-button class="btn1" id="mat-raised-button1" color="primary" type="submit">Update</button>
+        <button mat-raised-button class="btn1" color="primary" type="button" (click)="delete()">Delete</button>
+    </span>
+
+    <div style="clear: both;"></div>
+    
+</form>
+
+
+
+

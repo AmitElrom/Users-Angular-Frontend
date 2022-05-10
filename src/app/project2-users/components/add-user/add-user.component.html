@@ -1,0 +1,63 @@
+<div class="add_user">
+    <h2>Add New User</h2>
+
+    <form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm.valid)" class="add_user_content"
+        [style.opacity]="!isExistId ? '1' : '.3' ">
+        <div class="id_and_name">
+            <div class="id_div">
+                ID : 
+                <mat-form-field appearance="outline" style="margin-left: 1.55em;">
+                    <input required pattern="^(?![0])[0-9]{3}$" matInput type="number" #id="ngModel" name="id" [(ngModel)]="newUser.id" >
+                    <mat-hint>Make sure you enter a number between 100 and 999.
+                    </mat-hint>
+                </mat-form-field>
+            </div> 
+            <div style="display: inline-block;">
+                Name : 
+                <mat-form-field appearance="outline">
+                    <input pattern="^[a-zA-Z\s]+$" required matInput type="text" #name="ngModel" name="name" [(ngModel)]="newUser.name" >
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            Email : 
+            <mat-form-field appearance="outline">
+                <input email required matInput type="email" #email="ngModel" name="email" [(ngModel)]="newUser.email" >
+            </mat-form-field>
+        </div>
+
+        <div>
+            <div *ngIf="id.touched && !id.dirty || id.errors?.['required'] && id.dirty">
+                Id is madatory.
+            </div>
+            <div style="margin-bottom: 1em;" *ngIf="!id.valid && id.dirty && !id.errors?.['required']">
+                Id can only contain numbers between 100 and 999.
+            </div> 
+            <div *ngIf="name.touched && !name.dirty || name.errors?.['required'] && name.dirty">
+                Name is madatory.
+            </div>
+            <div style="margin-bottom: 1em;" *ngIf="!name.valid && name.dirty && !name.errors?.['required']">
+                Name nust include only English letters.
+            </div>
+            <div *ngIf="email.touched && !email.dirty || email.errors?.['required'] && email.dirty">
+                Email is madatory.
+            </div>
+            <div style="margin-bottom: 1em;" *ngIf="!email.valid && email.dirty && !email.errors?.['required']">
+                Email must have an email syntax.
+            </div>
+        </div>
+
+        <button mat-raised-button style="margin-bottom: 1em; margin-right: 1em;" color="warn" type="button" (click)="toGeneralPage()" >Cancel</button>
+        <button mat-raised-button style="margin-bottom: 1em;" color="primary" type="submit" >Add</button>
+
+    </form>
+
+    <div *ngIf="isExistId" class="error_id_exist">
+        <h3><strong>Pay Attention</strong></h3>
+        <p>A user with the same ID as you entered, is already exists.</p>
+        <p>Enter a new ID.</p>
+        <button mat-raised-button color="warn" type="button" (click)="closeNoteId()">close</button>
+    </div>
+
+    
+</div>

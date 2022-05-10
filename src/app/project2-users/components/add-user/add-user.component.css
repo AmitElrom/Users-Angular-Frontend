@@ -1,0 +1,37 @@
+.add_user
+{
+    margin-top: 6.5em;
+}
+
+.add_user_content
+{
+    border: .3em solid black;
+    border-radius: .5em;
+    padding: 1em;
+}
+
+.id_and_name
+{
+    margin-bottom: .5em;
+}
+
+.id_div
+{
+    margin-bottom: .5em;
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.error_id_exist
+{
+    border: .2em solid red;
+    border-radius: .3em;
+    padding: 2em;
+    text-align: center;
+    position: relative;    
+    bottom: 16.5em;
+    background-color: white;
+    width: fit-content;
+    margin: auto;
+}
+

@@ -1,0 +1,35 @@
+<div class="add_task_all">
+
+    <h2>Create Post - {{userData.name}}</h2>
+
+    <div class="add_task">
+
+        <div>
+            <strong>Title : </strong>
+            <mat-form-field style="width: 90%;" appearance="outline">
+                <input matInput type="text" required #title="ngModel" name="title" [(ngModel)]="newPost.title">
+            </mat-form-field>
+        </div>
+        <div>
+            <strong>Body : </strong>
+            <mat-form-field style="width: 90%;" appearance="outline">
+                <input matInput type="text" name="title" [(ngModel)]="newPost.body">
+            </mat-form-field>
+        </div>
+
+        <div>
+            <div *ngIf="!title.valid && title.dirty || title.touched && title.errors?.['required']">
+                Post's title is mandatory.
+            </div>
+        </div>
+
+        <div >
+            <span class="div_btns">
+                <button mat-raised-button style="margin-bottom: 1em; margin-right: 1em;" color="warn" type="button" (click)="cancel()" >Cancel</button>
+                <button mat-raised-button style="margin-bottom: 1em;" color="primary" type="button" (click)="add(title.valid)" >Add</button>
+            </span>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,26 @@
+<div class="users_all">
+    <div class="left">
+        Search : 
+        <mat-form-field appearance="outline" style="margin-right: 1em;">
+            <input type="text" matInput #searchInput (keyup)="search(searchInput.value)" >
+        </mat-form-field>  
+        
+        <button mat-raised-button class="btn1" color="primary" (click)="addUser()">Add User</button>
+        
+        <app-user (notify)="chooseUser($event)" *ngFor="let user of filterdUsers" [userData]="user"></app-user>
+    </div>
+
+    <div class="right">
+        <router-outlet name="tasks"></router-outlet><br>
+        <router-outlet name="posts"></router-outlet>
+    </div>
+</div>
+
+<div class="new_user_msg" *ngIf="newUserMsg.isNewUserMsg">
+    <h2>New User Created !</h2>
+    <h3>Welcome {{newUserMsg.name}} !</h3>
+    <button mat-raised-button color="warn" type="button" (click)="toUser()" >close and show user</button>
+</div>
+
+
+

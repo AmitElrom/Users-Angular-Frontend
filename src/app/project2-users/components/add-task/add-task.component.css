@@ -1,0 +1,17 @@
+.add_task_all
+{
+    margin-top: 6.5em;
+    clear: both;
+}
+
+.add_task
+{
+    border: .3em solid black;
+    padding: 1em;
+}
+
+.div_btns
+{
+    display: flex;
+    justify-content: flex-end;
+}

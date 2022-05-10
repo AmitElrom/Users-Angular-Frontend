@@ -1,0 +1,28 @@
+form
+{
+    border: .3em solid; padding: 1em; 
+    border-radius: 0.5em;
+    margin: 1em 0;
+}
+
+.user_id
+{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.user_id:hover
+{
+    text-decoration: underline;
+}
+
+.btn1
+{
+    float: right;
+}
+
+#mat-raised-button1
+{
+    margin-left: 1em;
+}

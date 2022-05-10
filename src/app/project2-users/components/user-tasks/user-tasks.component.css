@@ -1,0 +1,21 @@
+.tasks_all
+{
+    margin-top: 6.5em;
+}
+
+.tasks
+{
+    border: .3em solid black;
+}
+
+@media (max-width : 665px)
+{
+    .tasks
+    {
+        margin-top: 3em;
+    }
+    .add_task_btn
+    {
+        width: 100%;
+    }
+}
